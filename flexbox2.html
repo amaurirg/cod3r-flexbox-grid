@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox #02</title>
+    <style>
+        div {
+            border: solid 5px dodgerblue;
+            font-size: 40px;
+        }
+
+        .flex-container div {
+            box-sizing: border-box;                 /* A margem contará com a borda */
+        }
+
+        .flex-container {
+            display: flex;
+            height: 300px;
+            width: 600px;
+        }
+
+        .flex-container div:nth-child(3) {          /* Pega o terceiro filho, no caso o 3 */
+            background-color: indianred;
+            order: 1;                               /* Ordem acima de zero será o último elemento */
+            order: 0;                               /* Ordem padrão dos itens */
+            order: -1;                              /* Ordem abaixo de zero será o primeiro elemento */
+            align-self: center;                     /* Centraliza o item */
+            align-self: flex-end;                   /* Coloca o item no final */
+            align-self: stretch;                    /* Valor padrão */
+            align-self: flex-start;                 /* Coloca o item no início */
+        }
+
+
+        /* flex-grow funciona assim: se temos 4 elementos de 100px cada e um container de 600px, faltará 200px para completá-lo.
+        Se quisermos preencher todo o container podemos utilizar o flex-grow para nos ajudar.
+        A lógica: o número 1 que informamos em "flex-grow: 1" significa que será aplicado uma regra que funciona da seguinte forma:
+        Sobraram 200px no container e temos 4 elementos com "flex-grow: 1". Soma-se 1+1+1+1=4. É feita então a divisão 200px/4 = 50px. 
+        Nesse caso ele aumentará 50px para cada elemento porque 50x1 = 50.
+        Podemos colocar também o valor 2 em apenas um elemento e ficaria assim:
+        A lógica: o número 2 que informamos em "flex-grow: 2" significa que será aplicado uma regra que funciona da seguinte forma:
+        Sobraram 200px no container e temos 4 elementos, sendo três com valor 1 e um com valor 2. Soma-se 1+2+1+1=5. 
+        É feita a divisão 200/5 = 40. Nesse caso ele aumentará 40px para os elementos que tiverem valor 1 porque 40x1 = 40 
+        e aumentará 80px para o elemento que tiver valor 2 porque 40x2 = 80. Nesse caso 40x3 = 120 e 80x1 = 80. Somando 120+80 = 200px.
+        */
+
+        .flex-container div {
+            width: 100px;                           /* Largura da div */
+            flex-grow: 0;                           /* Padrão px multiplicado por zero é igual a zero */
+            flex-grow: 1;                           /* Aumentará 50px para cada elemento */
+        }
+
+        .flex-container div:nth-child(2) {          /* Pega o primeiro filho, no caso NÃO é o 3 como acima e sim o 1 porque é o 
+                                                    primeiro elemento dentro da div*/
+            flex-grow: 2;                           /* Aplica a regra acima e o elemento terá 180px e os outros 3 terão 140px cada,
+                                                    totalizando (140px * 3 = 420px) + 180px = 600 px */
+        }
+
+        
+        /* flex-shrink funciona da mesma forma que o flex-grow porém é o inverso encolhendo o elemento */
+
+        .flex-container {
+            width: 300px;                           /* Largura do container */
+            flex-shrink: 1;                         /* Aplica o valor 1 para todos os elementos */
+        }
+
+        .flex-container div:nth-child(1) {          /* Pega o primeiro elemento da div, no caso o 1 */
+            flex-shrink: 5;                         /* Aplica o valor 5 encolhendo o elemento. Soma 5+1+1+1=8. Divide 200px/8 = 25px.
+                                                    Aumenta 25 x 1 = 25px para cada elemento com valor 1 e 25 x 5 = 125 para o
+                                                    elemento com valor 5. Totalizando (3 x 25 = 75px) + 125px = 200px */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-container">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+</body>
+
+</html>

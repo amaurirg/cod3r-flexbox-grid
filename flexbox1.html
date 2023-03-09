@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox #01</title>
+    <style>
+        div {
+            border: solid 5px dodgerblue;
+            font-size: 40px;
+            margin: 5px;
+        }
+
+        .big {
+            font-size: 1.5em;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-direction: column;             /* Direção coluna (padrão é row) */
+            flex-direction: column-reverse;     /* Inverte a ordem dos elementos (o último será o primeiro) */
+            flex-direction: row-reverse;        /* Começa da direita para a esquerda */
+            flex-direction: row;                /* Alinhamento padrão */ 
+            width: 50%;                         /* O container passa a ser metade da página mas os elementos ultrapassam esse tamanho */
+            flex-wrap: wrap;                    /* Quebra a linha e os elementos respeitam o width 50% (padrão nowrap) */
+            flex-wrap: wrap-reverse;            /* Linha de baixo e pra cima e vice-versa */
+            flex-flow: row wrap;                /* flex-flow mistura flex-direction com flex-wrap e row wrap quebra as linhas de acordo com o height */
+            height: 200px;                      /* Tamanho para demonstração que sem row wrap os elementos ultrapassam os 200px */
+            flex-flow: column-reverse wrap;     /* Inverte a ordem dos elementos (o último será o primeiro) */
+            flex-flow: row wrap;                /* Quebra a linha e os elementos respeitam o width */
+
+            /* Main axis */
+            justify-content: flex-start;        /* Alinha o conteúdo à esquerda */
+            justify-content: flex-end;          /* Alinha o conteúdo à direita */
+            justify-content: center;            /* Alinha o conteúdo centralizado */
+            justify-content: space-around;      /* Coloca espaços entre os elementos e as margens do container*/
+            flex-direction: row-reverse;        /* Começa da direita para a esquerda */
+            justify-content: space-between;     /* Coloca espaços somente entre os elementos */
+
+            /* Cross Axis */
+            height: 400px;                      /* Tamanho da altura */
+            align-items: stretch;               /* Padrão que estica os itens conforme o height */
+            align-items: baseline;              /* Limita pelo tamanho da base da fonte */
+            align-items: flex-start;            /* Alinha os itens pelo início do height */
+            align-items: flex-end;              /* Alinha os itens pelo fim do height */
+            align-items: center;                /* Alinha os itens pelo centro do height */
+
+            /* mais de uma linha */
+            align-content: flex-start;          /* Todas as linhas para o início do container */
+            align-content: flex-end;            /* Todas as linhas para o final do container */
+            align-content: center;              /* Todas as linhas para o centro do container */
+            align-content: space-around;        /* Todas as linhas com espaços entre os elementos e as margens do container */
+            align-content: space-between;       /* Todas as linhas com espaços somente entre os elementos do container */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-container">
+        <div>1</div>
+        <div>2</div>
+        <div class="big">3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>10</div>
+    </div>
+</body>
+
+</html>

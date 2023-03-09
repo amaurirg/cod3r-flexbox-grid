@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox #03</title>
+    <style>
+        div {
+            border: solid 5px dodgerblue;
+            font-size: 40px;
+        }
+
+        .flex-container div {
+            box-sizing: border-box;                     /* A margem contará com a borda */
+        }
+
+        .flex-container {
+            display: flex;                              /* O contrário de block (onde cada elemento será em uma linha) */
+            flex-direction: row;                        /* Alinhamento padrão */ 
+        }
+
+        .flex-container div {
+            flex-basis: 100px;                          /* É a forma de especificar o tamanho do elemento dentro do container
+                                                        Se for row será como width e se for column será como height */
+            width: 200px;                               /* vai perder do flex-basis e não será aplicado */
+        }
+
+        .flex-container div:nth-child(4) {              /* Pega o quarto filho do container */
+            /* grow shrink basis */
+            flex: 3 6 100px;                            /* Junta as 3 propriedades grow shrink basis */
+        }
+
+        .flex-container {
+            width: 300px;                               /* Diminuindo e aumentando */
+            width: 600px;                               /* o tamanho para se ver o efeito da propriedade flex acima */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-container">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+</body>
+
+</html>
