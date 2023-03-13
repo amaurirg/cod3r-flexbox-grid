@@ -10,54 +10,66 @@
         html,
         body {
             margin: 20px;
-            height: calc(100% - 40px);
+            height: calc(900px - 40px);                  /* Calcula a altura e coloca 20px de margin em cada lado */
             background-color: lightgray;
         }
         
         div {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            /* height: 100px; */                        /* Altura somente para testar que o align items alinha o número */
+            display: flex;                              /* Torna esse elemento em um flex container */
+            align-items: center;                        /* Alinha o elemento ao centro do height */
+            justify-content: center;                    /* Alinha o elemento ao centro do width */
             font-size: 30px;
             border: solid 5px dodgerblue;
-            background: #fff;
+            background: #fff;                           
         }
 
         body {
-            display: grid;
-            grid-template-columns: 50% 50%;
-            grid-template-columns: repeat(4, 8.33% 8.33% 8.33%);
-            grid-template-columns: repeat(12, 8.33%);
-            grid-template-columns: repeat(11, 100px) 100px;
-            /* minmax(100px, 300px) */
-            grid-template-columns: 200px 20% 1fr;
-            grid-template-columns: 3fr 6fr 3fr;
-            grid-template-rows: 50% 25% 12.5% 12.5%;
-            grid-template-rows: 100px 1fr;
-            grid-template-rows: 100px auto auto auto;
+            display: grid;                                              /* Ocupará todo height do body */
+            grid-template-columns: 50% 50%;                             /* Grid com duas colunas iguais */
+            grid-template-columns: repeat(4, 8.33% 8.33% 8.33%);        /* Repete 4 vezes para cada coluna de 8.33% (8.33 = 100÷12) */
+            grid-template-columns: repeat(12, 8.33%);                   /* Repete 12 vezes 8.33% (8.33 = 100÷12) */
+            grid-template-columns: repeat(11, 100px) 100px;             /* Repete 11 vezes mais 1 vez fora do repeat para completar 12 colunas */
+            /* minmax(100px, 300px) */                                  /* Determina que a coluna tenha no min 100 e max 300px */
+            grid-template-columns: 200px 20% 1fr;                       /* 3 colunas. 200px fixo, 20% de acordo com a tela e 1 fragmento
+                                                                        que pegará todo o restante do body */
+            grid-template-columns: 3fr 6fr 3fr;                         /* Todas as 3 colunas divididas com fr (fragmento) */
+            grid-template-rows: 50% 25% 12.5% 12.5%;                    /* Primeira linha com metade, a segunda 25% e as outras duas com 25% */
+            grid-template-rows: 100px 1fr;                              /* Primeira linha 100px, a segunda ocupará o que sobrar das outras duas linhas
+                                                                         abaixo. As últimas terão o mínimo necessário para serem renderizadas */
+            grid-template-rows: 100px 1fr, 150px;                       /* Primeira linha 100px, a segunda ocupará o que sobrar, a terceira terá 150px 
+                                                                        e a última terá o mínimo necessário para ser renderizada */
+            grid-template-rows: 100px 100px;                            /* Primeira e segunga linhas com 100px e as outras 2 divididas igualmente */
+            grid-template-rows: 100px auto;                             /* Primeira linha 100px e as outras 3 divididas igualmente */
+            grid-template-rows: 100px auto auto auto;                   /* Igual acima mas no navegador conseguimos ver todos os números das 
+                                                                        linhas com F12, selecionando body e em layout marcando body */
         }
 
+        /* Para visualizar as linhas, use o F12 no navegador, selecionando body e em layout marcando body  */
         .d8 {
-            grid-column-start: 2;
-            grid-column-end: 4;
-            grid-column-end: span 2;
-            grid-row-start: 3;
-            grid-row-end: 5;
-            grid-row-end: span 2;
+            grid-column-start: 2;                                       /* Começará na coluna 2 */
+            grid-column-end: 4;                                         /* Terminará na coluna 4 */
+            grid-column-end: span 2;                                    /* O mesmo que acima porém especificamos que iremos até duas colunas */
+            grid-row-start: 3;                                          /* Começará na linha 3 */
+            grid-row-end: 5;                                            /* Terminará na linha 5 */
+            grid-row-end: span 2;                                       /* O mesmo que acima porém especificamos que iremos até duas linhas */
         }
 
         .d10,
         .d11 {
             /* podem se sobrepor */
-            grid-column-start: 1;
-            grid-column-end: 3;
-            grid-row-start: 5;
-            grid-row-end: span 1;
+            grid-column-start: 1;                                       /* Começará na coluna 1 */
+            grid-column-end: 3;                                         /* Terminará na coluna 3 */
+            grid-row-start: 5;                                          /* Começará na linha 5 */
+            grid-row-end: span 1;                                       /* Terminará na linha 6 */
         }
 
         .d10 {
-            z-index: 10;
+            z-index: 10;                                                /* Valor positivo fica em cima do outro elemento
+                                                                           Valor negativo fica em cima do outro elemento 
+                                                                           Quanto maior o valor, maior o grau de importância sobre outro elemento */
         }
+        
     </style>
 </head>
 
